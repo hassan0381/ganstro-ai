@@ -2,8 +2,10 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Bai_Jamjuree } from "next/font/google";
 import "./globals.css";
-// import { Toaster } from "sonner";
-// import { ReactQueryProvider } from "@/lib/react-query";
+import { Toaster } from "sonner";
+import { ReactQueryProvider } from "@/lib/react-query";
+import { QueryClient } from "@tanstack/react-query";
+import Providers from "./providers";
 
 const baiJamjuree = Bai_Jamjuree({
   subsets: ["latin"],
@@ -24,10 +26,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={baiJamjuree.className} suppressHydrationWarning>
-        {/* <ReactQueryProvider> */}
-        {children}
-        {/* <Toaster richColors /> */}
-        {/* </ReactQueryProvider> */}
+        <Providers>
+          {children}
+          <Toaster richColors />
+        </Providers>
       </body>
     </html>
   );
